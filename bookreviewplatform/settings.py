@@ -2,7 +2,6 @@ from pathlib import Path
 import os
 import dj_database_url
 from datetime import timedelta
-from storages.backends.azure_storage import AzureStorage
 from decouple import AutoConfig
 import sys
 
