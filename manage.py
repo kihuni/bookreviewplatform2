@@ -3,6 +3,10 @@
 import os
 import sys
 
+# Print the current Python path
+print("Current Python path:")
+for path in sys.path:
+    print(path)
 
 def main():
     """Run administrative tasks."""
