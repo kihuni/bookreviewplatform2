@@ -1,3 +1,4 @@
+from storages.backends.azure_storage import AzureStorage 
 from pathlib import Path
 import os
 import dj_database_url
