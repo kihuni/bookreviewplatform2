@@ -19,10 +19,6 @@ AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 
 
 DEFAULT_FILE_STORAGE = 'bookreviewplatform.azure.AzureMediaStorage'
-
-
-class AzureMediaStorage(AzureStorage):
-   location = 'media'
     
 
 # Use the DATABASE_URL environment variable for the connection
