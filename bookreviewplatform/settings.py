@@ -20,7 +20,7 @@ AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 
 
-DEFAULT_FILE_STORAGE = 'azure.AzureMediaStorage.AzureMediaStorage'
+DEFAULT_FILE_STORAGE = 'bookreviewplatform.azure.AzureMediaStorage.AzureMediaStorage'
     
 
 # Use the DATABASE_URL environment variable for the connection
