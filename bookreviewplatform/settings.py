@@ -1,3 +1,4 @@
+from .azure.AzureMediaStorage import AzureMediaStorage
 from storages.backends.azure_storage import AzureStorage 
 from pathlib import Path
 import os
