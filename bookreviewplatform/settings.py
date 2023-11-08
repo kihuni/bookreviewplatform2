@@ -1,11 +1,11 @@
-from .azure.AzureMediaStorage import AzureMediaStorage
-from storages.backends.azure_storage import AzureStorage 
+from bookreviewplatform.azure.AzureMediaStorage import AzureMediaStorage
 from pathlib import Path
 import os
 import dj_database_url
 from datetime import timedelta
 from decouple import AutoConfig
 import sys
+config = AutoConfig()
 
 print(sys.path)
 
@@ -38,8 +38,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-config = AutoConfig()
 
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
