@@ -27,10 +27,9 @@ DEFAULT_FILE_STORAGE = 'bookreviewplatform.azure.AzureMediaStorage.AzureMediaSto
 # Use the DATABASE_URL environment variable for the connection
 #DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
+#DATABASES = {
+    #'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+#}
 # Configure your Azure Blob Service Endpoint
 AZURE_BLOB_SERVICE_ENDPOINT = "https://mediakihuni2.blob.core.windows.net/"
 
@@ -42,7 +41,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True' 
-ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', '').split(',')
+#ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', '127.0.0.1:8000').split(',')
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
@@ -125,15 +125,17 @@ WSGI_APPLICATION = 'bookreviewplatform.wsgi.application'
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('POSTGRES_DB', 'default_db_name'),
-       'USER': config('POSTGRES_USER', 'default_user'),
+       'NAME': config('POSTGRES_DB', 'default_db_name'),
+      'USER': config('POSTGRES_USER', 'default_user'),
        'PASSWORD': config('POSTGRES_PASSWORD', 'default_password'),
         'HOST': config('POSTGRES_HOST', 'db'),
         'PORT': int(config('POSTGRES_PORT', 5432)),
-       #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / "db.sqlite3",
+       'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
