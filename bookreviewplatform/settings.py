@@ -1,4 +1,4 @@
-from azure.AzureMediaStorage import AzureMediaStorage
+from storages.backends.azure_storage import AzureStorage
 from pathlib import Path
 import os
 import dj_database_url
@@ -7,33 +7,25 @@ from decouple import AutoConfig
 import sys
 config = AutoConfig()
 
-print(sys.path)
+# Add the path to your AzureMediaStorage class
+from bookreviewplatform.azure.AzureMediaStorage import AzureMediaStorage
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
-
-
 # Azure Blob Storage settings
-
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
 AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 
-
+# Use AzureMediaStorage for media files
 DEFAULT_FILE_STORAGE = 'bookreviewplatform.azure.AzureMediaStorage.AzureMediaStorage'
-    
 
 # Use the DATABASE_URL environment variable for the connection
-#DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
+# DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'])}
 
-#DATABASES = {
-    #'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-#}
 # Configure your Azure Blob Service Endpoint
 AZURE_BLOB_SERVICE_ENDPOINT = "https://mediakihuni2.blob.core.windows.net/"
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -41,8 +33,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True' 
-#ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', '127.0.0.1:8000').split(',')
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
