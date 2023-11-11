@@ -9,6 +9,8 @@ COPY . /code/
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip
+RUN apt-get update && apt-get install -y libpq-dev
+RUN apt-get update && apt-get install -y postgresql-client
 RUN pip install -r requirements.txt
 
 # Make port 8000 available to the world outside this container
