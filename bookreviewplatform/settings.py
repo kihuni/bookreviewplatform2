@@ -1,4 +1,4 @@
-from bookreviewplatform.azure.AzureMediaStorage import AzureMediaStorage
+from azure.AzureMediaStorage import AzureMediaStorage
 from pathlib import Path
 import os
 import dj_database_url
